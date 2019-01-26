@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Parts from './Parts'
-import FEATURES from '../index'
 
 
 function Specs (props) {
@@ -8,7 +7,6 @@ function Specs (props) {
             return (
                 <section className="main__form">
                     <div className="feature__name">{props.title}</div>
-<<<<<<< HEAD
                 <ul className="feature__list">
                 {props.options && props.options.map((key, index, options,) =>
                         <Parts
@@ -18,15 +16,6 @@ function Specs (props) {
                             name={key.name}
                             cost={key.cost}
                             onClick={props.onClick}                   
-=======
-                <ul className="feature__list" key={props.index}>
-                {props.options && props.options.map((option, stuff, index) =>
-                        <Parts
-                            name={option.name}
-                            cost={option.cost}
-                            onClick={props.onClick}  
-                            index={index}                   
->>>>>>> parent of a0fface... added price functionality and value keys
                         />
                     )}
                 </ul>
