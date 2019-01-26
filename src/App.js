@@ -29,27 +29,32 @@ class App extends Component {
             }
         };
         this.handleClick = this.handleClick.bind(this)
+        // this.total = this.total.bind(this)
     }
 
-    handleClick( name, cost, title) {
-        const selected = {
-            title:title,
-            name:name,
-            cost:cost
-        }
+    handleClick( feature, newValue) {
+        const selected = Object.assign({}, this.state.selected);
+    selected[feature] = newValue;
+    this.setState({
+      selected
+    });
+
        // Conditional logic for element that is selected to apply style
-        console.log(selected);
+        console.log(newValue);
+
+        // {this.total(cost)}
     }
 
-    total = (key) => {
-       const totalPrice = Object.keys(this.state.selected)
-          .reduce((acc, curr) => acc + this.state.selected[curr].cost, 0); 
-          return totalPrice;
-    }
+ 
+    // total = () => {
+    //    const totalPrice = Object.keys(this.state.selected).reduce((acc, curr) => acc + this.state.selected[curr].cost, 0); 
+    //       return totalPrice;
+    // }
 
     
 
-    render () {
+    render (key) {
+        console.log(this.state.selected)
         return (
             <div className="App">
                 <header>
@@ -72,9 +77,10 @@ class App extends Component {
                     )}
                 </section>
                 <Summary 
-                    setTotal={this.total}
-                    selectedParts={this.state.selected}
-                    setTotal={this.total()}
+                    // setTotal={this.total}
+                    selectedName={Object.keys(this.state.selected).map((key, index, name) => this.state.selected[key][name])}
+                    selectedParts={Object.keys(this.state.selected).map((key, index) => this.state.selected[key])}
+                    // setTotal={this.total()}
                 />
                 </main>
             </div>

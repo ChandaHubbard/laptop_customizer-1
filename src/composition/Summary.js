@@ -8,10 +8,10 @@ function Summary(props) {
     .map(key => 
       <div className="summary__option" key={key}>
         <div className="summary__option__label">{key}  </div>
-        <div className="summary__option__value">{props.selectedParts[key].name}</div>
+        <div className="summary__option__value">{props.selectedParts.name}</div>
         <div className="summary__option__cost">
-          { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-              .format(props.selectedParts[key].cost) }
+          {/* { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+              .format(props.selectedParts[key].cost) } */}
         </div>
       </div>)
           return (
@@ -21,8 +21,8 @@ function Summary(props) {
               <div className="summary__total">
                 <div className="summary__total__label">Your Price:  </div>
                 <div className="summary__total__value">
-                { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                    .format(props.setTotal) }
+                {/* { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+                    .format(props.setTotal) } */}
                 </div>
               </div>
             </section>

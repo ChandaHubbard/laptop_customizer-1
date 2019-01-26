@@ -7,10 +7,10 @@ function Specs (props) {
             return (
                 <section className="main__form">
                     <div className="feature__name">{props.title}</div>
-                <ul key={props.index} className="feature__list">
+                <ul className="feature__list">
                 {props.options && props.options.map((key, index, options,) =>
                         <Parts
-                            key={key}
+                            // key={key}
                             title={props.title}
                             parts={options[index]}
                             name={key.name}
