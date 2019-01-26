@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 
 
 function Parts(props) {
+        console.log(props.title, props.parts)
         return (
-                <li 
-                onClick={() =>props.onClick && props.onClick(props.name, props.cost)}
-                key={props.index}
+                <li key={props.index}
+                onClick={() =>props.onClick && props.onClick(props.name, props.cost, props.title)}
                 >
                   {props.name} (${props.cost})
                 </li>
