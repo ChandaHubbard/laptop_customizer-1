@@ -1,9 +1,10 @@
-import React, { component } from 'react';
+import React, { Component } from 'react';
 
 
 
 
 function Summary(props) {
+<<<<<<< HEAD
   const { summary } = Object.keys(props.selectedParts)
     .map(key => 
       <div className="summary__option" key={key}>
@@ -24,9 +25,21 @@ function Summary(props) {
                 {/* { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
                     .format(props.setTotal) } */}
                 </div>
+=======
+        return (
+            <section className="main__summary">
+            <h3>NEW GREENLEAF 2018</h3>
+            {/* {summary} */}
+            <div className="summary__total">
+              <div className="summary__total__label">Your Price: </div>
+              <div className="summary__total__value">
+              {/* { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+                  .format(props.setTotal()) } */}
+>>>>>>> parent of a0fface... added price functionality and value keys
               </div>
-            </section>
-          )
+            </div>
+          </section>
+        )
 }
 
 export default Summary;
