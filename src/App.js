@@ -9,10 +9,11 @@ class App extends Component {
         super(props);
         this.state = {
             features: FEATURES,
-            selected: { }
+            selected: { },
+            costs: [0 ],
         };
         this.handleClick = this.handleClick.bind(this)
-        // this.total = this.total.bind(this)
+        this.total = this.total.bind(this)
     }
 
     handleClick( title, cost, name) {
@@ -22,39 +23,33 @@ class App extends Component {
         //     cost: cost
         // }
         const selected = Object.assign({}, this.state.selected, );
-    selected[name] = title
-    selected[title] = cost
-    // selected[title] = cost
-  
-    this.setState({
-      selected
-    });
+        selected.title = name
+        selected.name = title;
+        selected['cost'] = cost
+        this.state.costs.push(cost) 
 
-    // handleClick(name, cost, title) {
-    //     const newSelected = []
-    //     newSelected.push(title, name, cost);
+        this.setState({
+            selected
+        });
 
-    //     // this.setState({
-    //     //     selected: newSelected
-    //     //     });
-    
-
-       // Conditional logic for element that is selected to apply style
+   
         console.log(selected);
+        console.log(this.state.costs);
 
-        // {this.total(cost)}
+        {this.total(cost)}
     }
 
  
-    // total = () => {
-    //    const totalPrice = Object.keys(this.state.selected).reduce((acc, curr) => acc + this.state.selected[curr].cost, 0); 
-    //       return totalPrice;
-    // }
+    total = () => {
+        const add = (a, b) =>
+            a + b;
+        const sum = this.state.costs.reduce(add)
+        return sum;
+    }
 
     
 
     render (key) {
-        console.log(this.state.selected)
         return (
             <div className="App">
                 <header>
@@ -77,10 +72,9 @@ class App extends Component {
                     )}
                 </section>
                 <Summary 
-                    // setTotal={this.total}
-                    selectedName={Object.keys(this.state.selected).map((key, index, name) => this.state.selected[key])}
-                    selectedParts={Object.keys(this.state.selected).map((key, index) => this.state.selected[key])}
-                    // setTotal={this.total()}
+                    setTotal={this.total}
+                    selectedParts={this.state.selected}
+                    setTotal={this.total()}
                 />
                 </main>
             </div>

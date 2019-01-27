@@ -1,0 +1,17 @@
+
+  
+  .feature__option:not(.feature__selected):hover {
+    text-shadow: 1px 1px 2px blue;
+  }
+  
+  .feature__option:hover {
+    margin-top: 4px;
+    padding: 2px;
+    background: #DEDEDE;
+  }
+
+  li:visited {
+    margin-top: 4px;
+    padding: 2px;
+    background: #DEDEDE;
+  }
