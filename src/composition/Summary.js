@@ -10,7 +10,7 @@ function Summary(props) {
           return (
               <section className="main__summary">
                 <h3>NEW GREENLEAF 2018</h3>
-                
+                {Object.keys(props.selectedParts).map((name, title, cost) => 
                   <Preview
                     key={props.selectedParts}
                     keys={Object.keys(props.selectedParts)}
@@ -18,7 +18,7 @@ function Summary(props) {
                     title={props.selectedParts.title}
                     costs={props.selectedParts['cost']}
                   />
-                
+                  )}
                 
                    
                  
