@@ -9,7 +9,9 @@ function Parts(props) {
         return (
                 <div className="feature" >
                                 <li key={props.index} className="feature__option"
-                                onClick={() =>props.onClick && props.onClick(props.name, props.cost, props.title)}
+                                onClick={() =>props.onClick && props.onClick(props.name, props.cost, props.title) }
+                                style={{backgroundColor:props.bgColor}}
+                                
                                 >
                                 {props.name} (${props.cost})
                         </li>

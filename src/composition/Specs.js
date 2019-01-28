@@ -9,13 +9,16 @@ function Specs (props) {
                     <div className="feature__name">{props.title}</div>
                 <ul className="feature__list">
                 {props.options && props.options.map((key, index, options,) =>
+                
                         <Parts
                             key={index}
                             title={props.title}
                             parts={options[index]}
                             name={key.name}
                             cost={key.cost}
-                            onClick={props.onClick}                   
+                            onClick={props.onClick}
+                            bgColor={props.bgColor}
+                            change={props.change}                   
                         />
                     )}
                 </ul>
