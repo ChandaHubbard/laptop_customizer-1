@@ -16,27 +16,24 @@ class App extends Component {
         this.total = this.total.bind(this)
     }
 
-    handleClick( title, cost, name) {
-        // const obj = {
-        //     title: name,
-        //     name: title,
-        //     cost: cost
-        // }
-        const selected = Object.assign({}, this.state.selected, );
-        selected.title = name
-        selected.name = title;
-        selected['cost'] = cost
-        this.state.costs.push(cost) 
+    handleClick( name, cost, title) {
+        const selected = Object.assign(this.state.selected, selected);
+        selected[title] = [name, cost]
+      
 
+        // const selected = Object.assign({}, this.state.selected);
+        // selected[title] = feature
+        // selected['cost'] = newValue
         this.setState({
             selected
         });
 
-   
-        console.log(selected);
-        console.log(this.state.costs);
+        this.state.costs.push(cost) 
 
-        {this.total(cost)}
+        
+
+        this.total(cost)
+        console.log(this.state.selected)
     }
 
  
@@ -63,7 +60,7 @@ class App extends Component {
                     {Object.keys(this.state.features)
                         .map((key, index, title) => 
                         <Specs
-                            key={key}
+                            key={index}
                             index={index}
                             title={title[index]}
                             options={this.state.features[key]}
@@ -71,11 +68,30 @@ class App extends Component {
                         />
                     )}
                 </section>
-                <Summary 
-                    setTotal={this.total}
-                    selectedParts={this.state.selected}
-                    setTotal={this.total()}
-                />
+                <section className="main__summary">
+                    <h3>NEW GREENLEAF 2018</h3>
+
+                    {Object.keys(this.state.selected)
+                        .map((key, index, title) =>
+                    <Summary 
+                        key={key}
+                        index={index}
+                        name={this.state.selected[key][0]}
+                        title={Object.keys(this.state.selected)[index]}
+                        cost={this.state.selected[key][1]}
+                        selectedParts={this.state.selected}
+                        setTotal={this.total()}
+                    />
+
+                    )}
+                    <div className="summary__total">
+                    <div className="summary__total__label">Your Price:  </div>
+                    <div className="summary__total__value">
+                    { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+                        .format(this.total()) }
+                    </div>
+                    </div>
+                </section>
                 </main>
             </div>
         );

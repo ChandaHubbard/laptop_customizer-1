@@ -1,37 +1,24 @@
-import React, { component } from 'react';
+import React from 'react';
 import './summary.css'
-import Preview from './Preview'
+
 
 
 
 
 function Summary(props) {
- console.log(props.selectedParts)
-          return (
-              <section className="main__summary">
-                <h3>NEW GREENLEAF 2018</h3>
-                {Object.keys(props.selectedParts).map((name, title, cost) => 
-                  <Preview
-                    key={props.selectedParts}
-                    keys={Object.keys(props.selectedParts)}
-                    name={props.selectedParts.name}
-                    title={props.selectedParts.title}
-                    costs={props.selectedParts['cost']}
-                  />
-                  )}
-                
-                   
-                 
-                
-                <div className="summary__total">
-                  <div className="summary__total__label">Your Price:  </div>
-                  <div className="summary__total__value">
-                  { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                      .format(props.setTotal) }
-                  </div>
-                </div>
-            </section>
-          )
+  console.log(`props.title is ${props.title}`)
+  console.log(`props.name is ${props.name}`)
+
+  return (
+      <div className="summary__option" key={props.index}>
+          <div className="summary__option__label">{props.title} </div>
+          <div className="summary__option__value">{props.name} </div>
+          <div className="summary__option__cost">
+            { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+                .format(props.cost) }
+          </div>
+      </div>
+  )
 }
 
 export default Summary;
