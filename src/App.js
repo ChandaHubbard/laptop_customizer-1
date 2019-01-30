@@ -10,7 +10,7 @@ class App extends Component {
         this.state = {
             features: FEATURES,
             selected: { },
-            costs: [0 ],
+            costs: [0],
             bgColor: 'white'
         };
         this.handleClick = this.handleClick.bind(this)
@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     handleClick( name, cost, title) {
-        const selected = Object.assign(this.state.selected, selected);
+        const selected = Object.assign({}, this.state.selected);
         selected[title] = [name, cost]
   
         this.setState({
@@ -27,8 +27,11 @@ class App extends Component {
         });
 
         if (this.state.costs.length < 5) {
-            this.state.costs.push(cost)
+            this.setState({
+                costs: [...this.state.costs, cost]
+            })
         }
+
 
         this.changeColor(name)
 
@@ -38,23 +41,15 @@ class App extends Component {
 
     changeColor() {
         this.setState({bgColor: 'gainsboro'})
-
     }
 
-    showSelected() {
-        //Here is the conditional to highlight selected items on the left
-    }
-
- 
     total = () => {
-        const add = (a, b) =>
-            a + b;
-        const sum = this.state.costs.reduce(add)
+        let sum = 0
+        Object.keys(this.state.selected).forEach(key => {
+            sum += this.state.selected[key][1]
+        })
         return sum;
-        
-       
     }
-
     
 
     render (key) {
