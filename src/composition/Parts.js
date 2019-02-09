@@ -9,32 +9,21 @@ class Parts extends React.Component {
                 super(props);
                 this.state = {
                         backgroundColor: props.bgColor,
-                        active: null,
-                        selectedNames: [],
-                        selected: this.props.selected
                 }
         }
 
         handleClick(position) {
-
                 this.props.onClick && this.props.onClick(this.props.name, this.props.cost, this.props.title)
-    
-           
-                if (this.state.active === position) {
-                        this.setState({active: null})
-                }else {
-                        this.setState({active: position})
-                }
         }
 
         selectedColor(position) {
                 const selectedName = Object.keys(this.props.selected).map(key => this.props.selected[key][0])
                 console.log(selectedName);
-                for (let i = 0; i < selectedName.length; i++) {
-                        if (this.state.active === position && selectedName[i] === this.props.name) {
+            
+                        if (selectedName.includes(this.props.name)) {
                                 return 'gainsboro';
                         }
-                }
+                
                 return "";
         }
 
