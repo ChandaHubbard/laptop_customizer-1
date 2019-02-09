@@ -3,6 +3,7 @@ import './App.css';
 import FEATURES from './index';
 import Specs from './composition/Specs'
 import Summary from './composition/Summary'
+import Total from './composition/Total'
 
 class App extends Component {
     constructor(props){
@@ -89,15 +90,10 @@ class App extends Component {
                         selectedParts={this.state.selected}
                         setTotal={this.total()}
                     />
-
                     )}
-                    <div className="summary__total">
-                    <div className="summary__total__label">Your Price:  </div>
-                    <div className="summary__total__value">
-                    { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                        .format(this.total()) }
-                    </div>
-                    </div>
+                    <Total 
+                        total={this.total()}
+                    />
                 </section>
                 </main>
             </div>
