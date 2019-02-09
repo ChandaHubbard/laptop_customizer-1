@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import FEATURES from './index';
-import Specs from './composition/Specs'
+import MainForm from './composition/MainForm'
 import MainSummary from './composition/MainSummary'
 
 class App extends Component {
@@ -10,11 +10,9 @@ class App extends Component {
         this.state = {
             features: FEATURES,
             selected: { },
-            bgColor: 'white'
         };
         this.handleClick = this.handleClick.bind(this)
         this.total = this.total.bind(this)
-        this.changeColor = this.changeColor.bind(this)
     }
 
     handleClick( name, cost, title) {
@@ -25,20 +23,7 @@ class App extends Component {
             selected
         });
 
-
-        this.changeColor(name)
-
         this.total()
-        console.log(this.state.selected)
-    }
-
-    changeColor() {
-        // this.setState({bgColor: 'gainsboro'})
-        Object.keys(this.state.selected).forEach(key => {
-      
-            this.setState({bgColor: 'gainsboro'})
-        })
-        return this.setState({bgColor: 'gainsboro'})
     }
 
     total = () => {
@@ -50,31 +35,20 @@ class App extends Component {
     }
     
 
-    render (key) {
+    render () {
         return (
             <div className="App">
-                <header>
+                <header role="banner">
                     <h1>ELF Computing</h1>
                     <h3>Laptops</h3>
                     <h5>Customize your laptop</h5>  
                 </header>      
-                <main>
-                    <section className="main__form">
-                        <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
-                        {Object.keys(this.state.features)
-                            .map((key, index, title) => 
-                            <Specs
-                                key={index}
-                                index={index}
-                                title={title[index]}
-                                options={this.state.features[key]}
-                                selected={this.state.selected}
-                                onClick={this.handleClick} 
-                                bgColor={this.state.bgColor}
-                                change={this.changeColor}
-                            />
-                        )}
-                    </section>
+                <main role="main">
+                    <MainForm
+                        features={this.state.features}
+                        selected={this.state.selected}
+                        onClick={this.handleClick} 
+                    />
                     <MainSummary 
                         selected={this.state.selected}
                         total={this.total()}

@@ -1,9 +1,6 @@
 import React from 'react';
 import './Parts.css'
 
-
-
-
 class Parts extends React.Component {
         constructor(props){
                 super(props);
