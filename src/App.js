@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import FEATURES from './index';
 import Specs from './composition/Specs'
-import Summary from './composition/Summary'
-import Total from './composition/Total'
+import MainSummary from './composition/MainSummary'
 
 class App extends Component {
     constructor(props){
@@ -60,41 +59,26 @@ class App extends Component {
                     <h5>Customize your laptop</h5>  
                 </header>      
                 <main>
-                <section className="main__form">
-                    <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
-                    {Object.keys(this.state.features)
-                        .map((key, index, title) => 
-                        <Specs
-                            key={index}
-                            index={index}
-                            title={title[index]}
-                            options={this.state.features[key]}
-                            selected={this.state.selected}
-                            onClick={this.handleClick} 
-                            bgColor={this.state.bgColor}
-                            change={this.changeColor}
-                        />
-                    )}
-                </section>
-                <section className="main__summary">
-                    <h3>NEW GREENLEAF 2018</h3>
-
-                    {Object.keys(this.state.selected)
-                        .map((key, index, title) =>
-                    <Summary 
-                        key={key}
-                        index={index}
-                        name={this.state.selected[key][0]}
-                        title={Object.keys(this.state.selected)[index]}
-                        cost={this.state.selected[key][1]}
-                        selectedParts={this.state.selected}
-                        setTotal={this.total()}
-                    />
-                    )}
-                    <Total 
+                    <section className="main__form">
+                        <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
+                        {Object.keys(this.state.features)
+                            .map((key, index, title) => 
+                            <Specs
+                                key={index}
+                                index={index}
+                                title={title[index]}
+                                options={this.state.features[key]}
+                                selected={this.state.selected}
+                                onClick={this.handleClick} 
+                                bgColor={this.state.bgColor}
+                                change={this.changeColor}
+                            />
+                        )}
+                    </section>
+                    <MainSummary 
+                        selected={this.state.selected}
                         total={this.total()}
                     />
-                </section>
                 </main>
             </div>
         );
