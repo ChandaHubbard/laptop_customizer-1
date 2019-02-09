@@ -14,6 +14,7 @@ function Specs (props) {
                             key={index}
                             title={props.title}
                             parts={options[index]}
+                            selected={props.selected}
                             name={key.name}
                             cost={key.cost}
                             onClick={props.onClick}

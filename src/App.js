@@ -10,7 +10,6 @@ class App extends Component {
         this.state = {
             features: FEATURES,
             selected: { },
-            costs: [0],
             bgColor: 'white'
         };
         this.handleClick = this.handleClick.bind(this)
@@ -26,21 +25,20 @@ class App extends Component {
             selected
         });
 
-        if (this.state.costs.length < 5) {
-            this.setState({
-                costs: [...this.state.costs, cost]
-            })
-        }
-
 
         this.changeColor(name)
 
-        this.total(cost)
+        this.total()
         console.log(this.state.selected)
     }
 
     changeColor() {
-        this.setState({bgColor: 'gainsboro'})
+        // this.setState({bgColor: 'gainsboro'})
+        Object.keys(this.state.selected).forEach(key => {
+      
+            this.setState({bgColor: 'gainsboro'})
+        })
+        return this.setState({bgColor: 'gainsboro'})
     }
 
     total = () => {
@@ -70,6 +68,7 @@ class App extends Component {
                             index={index}
                             title={title[index]}
                             options={this.state.features[key]}
+                            selected={this.state.selected}
                             onClick={this.handleClick} 
                             bgColor={this.state.bgColor}
                             change={this.changeColor}
